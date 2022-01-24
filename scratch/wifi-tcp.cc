@@ -115,7 +115,8 @@ main (int argc, char *argv[])
   /* Set up Legacy Channel */
   YansWifiChannelHelper wifiChannel;
   wifiChannel.SetPropagationDelay ("ns3::ConstantSpeedPropagationDelayModel");
-  // wifiChannel.SetPropagationDelay ("ns3::Cost231PropagationLossModel", StringValue ("ns3::UniformRandomVariable"));
+  // wifiChannel.AddPropagationLoss ("ns3::Cost231PropagationLossModel", StringValue ("ns3::UniformRandomVariable"));
+  // wifiChannel.AddPropagationLoss ("ns3::RandomPropagationLossModel", 'Variable', StringValue ("ns3::ConstantRandomVariable[Constant=1.0]"));
   wifiChannel.AddPropagationLoss ("ns3::FriisPropagationLossModel", "Frequency", DoubleValue (5e9));
 
   /* Setup Physical Layer */
@@ -153,8 +154,8 @@ main (int argc, char *argv[])
   positionAlloc->Add (Vector (1.0, 1.0, 0.0));
 
   mobility.SetPositionAllocator (positionAlloc);
-  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-  // mobility.SetMobilityModel ("ns3::GaussMarkovMobilityModel");
+  // mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  mobility.SetMobilityModel ("ns3::GaussMarkovMobilityModel");
   mobility.Install (apWifiNode);
   mobility.Install (staWifiNode);
 

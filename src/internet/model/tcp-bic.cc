@@ -95,6 +95,8 @@ TcpBic::TcpBic (const TcpBic &sock)
 void
 TcpBic::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
 {
+// ORIGINAL
+
   NS_LOG_FUNCTION (this << tcb << segmentsAcked);
 
   if (tcb->m_cWnd < tcb->m_ssThresh)
@@ -129,8 +131,31 @@ TcpBic::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
         }
     }
 
+// ORIGINAL
+
+// PYGENP
+
 // uint32_t cnt = Update (tcb);
-//   ReduceCwnd(tcb);
+// char * individual = getenv("range");
+// if (individual != NULL) {
+//   switch(atoi(individual)) {
+// //REPLACE
+
+// //REPLACE
+
+//     default:
+//       break;
+//   }
+// }
+
+// PYGENP
+
+// TEST
+
+// uint32_t cnt = Update (tcb);
+
+// // run 10
+// ReduceCwnd(tcb);
 // if (m_cWndCnt > cnt) {
 //     tcb->m_cWnd += tcb->m_segmentSize;
 //     m_cWndCnt = 0;
@@ -157,20 +182,7 @@ TcpBic::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
 // }
 // ReduceCwnd(tcb);
 
-
-// uint32_t cnt = Update (tcb);
-// char * individual = getenv("range");
-// if (individual != NULL) {
-//   switch(atoi(individual)) {
-// //REPLACE
-
-// //REPLACE
-
-//     default:
-//       break;
-//   }
-// }
-
+// TEST
 
 }
 

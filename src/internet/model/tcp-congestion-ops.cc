@@ -236,6 +236,9 @@ TcpNewReno::TcpLinuxCongestionAvoidance (Ptr<TcpSocketState> tcb, uint32_t segme
 void
 TcpNewReno::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
 {
+
+// ORIGINAL
+
   NS_LOG_FUNCTION (this << tcb << segmentsAcked);
   if (tcb->m_cWnd < tcb->m_ssThresh)
     {
@@ -247,6 +250,9 @@ TcpNewReno::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
       CongestionAvoidance (tcb, segmentsAcked);
     }
 
+// ORIGINAL
+
+// PYGENP
 
 // char * individual = getenv("range");
 // if (individual != NULL) {
@@ -259,6 +265,34 @@ TcpNewReno::IncreaseWindow (Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
 //       break;
 //   }
 // }
+
+// PYGENP
+
+// TEST
+
+
+// run 10
+// tcb->m_cWnd = (int)1.712;
+// CongestionAvoidance(tcb, segmentsAcked);
+// tcb->m_cWnd = (int)-33.446;
+// segmentsAcked = (int)143.941;
+
+// for (int i = 0; i < 2; i++) {
+//     CongestionAvoidance(tcb, segmentsAcked);
+// }
+
+// tcb->m_cWnd = (int)-154.343;
+// segmentsAcked = (int)-88.614;
+
+// for (int i = 0; i < 3; i++) {
+//     CongestionAvoidance(tcb, segmentsAcked);
+// }
+
+// tcb->m_cWnd = (int)55.225;
+// segmentsAcked = (int)-182.114;
+// CongestionAvoidance(tcb, segmentsAcked);
+
+// TEST
 
 
   /* At this point, we could have segmentsAcked != 0. This because RFC says
