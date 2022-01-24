@@ -154,8 +154,8 @@ main (int argc, char *argv[])
   positionAlloc->Add (Vector (1.0, 1.0, 0.0));
 
   mobility.SetPositionAllocator (positionAlloc);
-  // mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
-  mobility.SetMobilityModel ("ns3::GaussMarkovMobilityModel");
+  mobility.SetMobilityModel ("ns3::ConstantPositionMobilityModel");
+  // mobility.SetMobilityModel ("ns3::GaussMarkovMobilityModel");
   mobility.Install (apWifiNode);
   mobility.Install (staWifiNode);
 
